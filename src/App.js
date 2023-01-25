@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import GlobalStyle from "./globalStyle";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Context } from "./context/Context";
+import Login from "./components/Login";
+import Cadastro from "./components/Cadastro";
+import Home from "./components/Home";
 
-function App() {
+export default function App() {
+
+  const [user, setUser] = React.useState(undefined);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <GlobalStyle />
+      <Context.Provider value={{ user, setUser }}>
+        <Routes>
+          <Route path="/" exact={true} element={<Login />} />
+          <Route path="/cadastro" element={<Cadastro />} />
+          <Route path="/home" element={<Home />} />
+        </Routes>
+      </Context.Provider>
+    </BrowserRouter>
   );
 }
-
-export default App;
