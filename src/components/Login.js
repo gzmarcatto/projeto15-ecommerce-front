@@ -15,7 +15,7 @@ export default function Login() {
     e.preventDefault();
     setDisable(true);
 
-    const request = axios.post(`${REACT_APP_API_URL}/login`, {
+    const request = axios.post(`${REACT_APP_API_URL}/sign-in`, {
       email: email,
       password: password,
     });
