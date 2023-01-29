@@ -5,6 +5,7 @@ import { Context } from "./context/Context";
 import Login from "./components/Login";
 import Cadastro from "./components/Cadastro";
 import Home from "./components/Home";
+import Checkout from "./components/Checkout";
 
 export default function App() {
 
@@ -18,6 +19,7 @@ export default function App() {
           <Route path="/" exact={true} element={<Login />} />
           <Route path="/cadastro" element={<Cadastro />} />
           <Route path="/home" element={<Home />} />
+          <Route path="/checkout" element={<Checkout />} />
         </Routes>
       </Context.Provider>
     </BrowserRouter>

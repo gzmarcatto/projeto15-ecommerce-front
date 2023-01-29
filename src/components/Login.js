@@ -8,6 +8,7 @@ export default function Login() {
   const [email, setemail] = React.useState("");
   const [password, setpassword] = React.useState("");
   const [disable, setDisable] = React.useState(false);
+  const { setuser } = useContext(Context);
   const navigate = useNavigate();
   const { REACT_APP_API_URL } = process.env;
 
@@ -20,6 +21,7 @@ export default function Login() {
       password: password,
     });
     request.then((resposta) => {
+      setuser(resposta.data);
       setDisable(false);
       navigate(`/home`);
     });
