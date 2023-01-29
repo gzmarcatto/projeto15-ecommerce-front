@@ -15,7 +15,7 @@ export default function Cadastro() {
     e.preventDefault();
     setDisable(true);
 
-    const request = axios.post(`${REACT_APP_API_URL}/cadastro`, {
+    const request = axios.post(`${REACT_APP_API_URL}/sign-up`, {
       email: email,
       name: name,
       password: password,
