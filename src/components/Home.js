@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { Context } from "../context/Context";
+import { useNavigate } from "react-router-dom";
 
 import MenuRoupas from "./MenuRoupas";
 import ListaProdutos from "./ListaProdutos";
@@ -10,6 +11,7 @@ export default function Home() {
   const {user} = useContext(Context)
   const [tituloProduto, setTituloProduto] = useState("Últimos lançamentos");
   const { REACT_APP_API_URL } = process.env;
+  const navigate = useNavigate();
   const produtosHardCoded = [
     {
       nome: "aaa",
@@ -60,8 +62,11 @@ export default function Home() {
   return (
     <Container>
       <Titulo>
+        <div>
         <h1>Descubra</h1>
         <h2>o melhor vestuário para você</h2>
+        </div>
+        <ion-icon name="cart-outline" onClick={() => navigate(`/carrinho`)}></ion-icon>
       </Titulo>
       <MenuRoupas setTituloProduto={setTituloProduto} />
       <ListaProdutos
@@ -96,5 +101,15 @@ const Titulo = styled.div`
   width: 100%;
   max-width: 650px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  div{
+    all: unset;
+    display: flex;
+    flex-direction: column;
+  }
+  ion-icon{
+    font-size: 24px;
+  }
 `;
